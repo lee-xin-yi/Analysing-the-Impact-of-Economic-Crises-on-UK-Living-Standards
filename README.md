@@ -106,8 +106,4 @@ A TypeError in the redistribution impact plot was resolved by enforcing numeric 
 The codebase is modular and extensible, with debugging outputs for transparency.
 Data files are not included; users must provide their own or use placeholders.
 
-License
-This project is licensed under the MIT License (see LICENSE).
-Contact
-For questions or contributions, open an issue or contact [your-email@example.com].
->>>>>>> 23a898e (Add taxes and benefits analysis files)
+
