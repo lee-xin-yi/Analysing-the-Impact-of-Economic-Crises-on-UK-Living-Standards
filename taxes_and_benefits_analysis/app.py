@@ -28,9 +28,9 @@ app = Flask(__name__)
 
 # Data file paths (adjust these to your local paths)
 DATA_DIR = 'data'
-TAX_FILE = os.path.join(DATA_DIR, 'tax-benefits-statistics-time-series-v3-filtered-2025-03-17T15-44-252.xlsx')
-UNEMP_FILE = os.path.join(DATA_DIR, 'Unemployment_rate_monthly.csv')
-INFL_FILE = os.path.join(DATA_DIR, 'Inflation_monthly.csv')
+TAX_FILE = os.path.join(DATA_DIR, 'csv/tax-benefits-statistics-time-series-v3-filtered-2025-03-17T15-44-25Z_data.xlsx')
+UNEMP_FILE = os.path.join(DATA_DIR, 'csv/Unemployment_rate_monthly.csv')
+INFL_FILE = os.path.join(DATA_DIR, 'csv/Inflation_monthly.csv')
 
 # Plot directory
 PLOT_DIR = os.path.join('static', 'plots')
