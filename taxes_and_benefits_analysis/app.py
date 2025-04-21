@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 import matplotlib.pyplot as plt
+import pandas as pd
 import os
 from data_management import load_data
 from data_cleaning import clean_tax_data, clean_economic_data, prepare_gini_data
@@ -26,9 +27,9 @@ from data_visualization import (
 
 app = Flask(__name__)
 
-# Data file paths (adjust these to your local paths)
+# Data file paths
 DATA_DIR = 'data'
-TAX_FILE = os.path.join(DATA_DIR, 'csv/tax-benefits-statistics-time-series-v3-filtered-2025-03-17T15-44-25Z_data.xlsx')
+TAX_FILE = os.path.join(DATA_DIR, 'csv/tax-benefits-statistics-time-series-v3-filtered-2025-03-17T15-44-25Z_data.csv')  # Updated to CSV
 UNEMP_FILE = os.path.join(DATA_DIR, 'csv/Unemployment_rate_monthly.csv')
 INFL_FILE = os.path.join(DATA_DIR, 'csv/Inflation_monthly.csv')
 
@@ -37,8 +38,23 @@ PLOT_DIR = os.path.join('static', 'plots')
 if not os.path.exists(PLOT_DIR):
     os.makedirs(PLOT_DIR)
 
-# Load and process data once at startup
-tax_df, unemp_df, infl_df = load_data(TAX_FILE, UNEMP_FILE, INFL_FILE)
+# Modified load_data function to handle CSV for tax file
+def custom_load_data(tax_file, unemp_file, infl_file):
+    try:
+        if tax_file.endswith('.csv'):
+            tax_df = pd.read_csv(tax_file)
+        else:
+            tax_df = pd.read_excel(tax_file, sheet_name=0)
+        unemp_df = pd.read_csv(unemp_file)
+        infl_df = pd.read_csv(infl_file)
+        print("All data loaded successfully.")
+        return tax_df, unemp_df, infl_df
+    except Exception as e:
+        print(f"Error loading data: {e}")
+        return None, None, None
+
+# Load and process data
+tax_df, unemp_df, infl_df = custom_load_data(TAX_FILE, UNEMP_FILE, INFL_FILE)
 if tax_df is None or unemp_df is None or infl_df is None:
     raise Exception("Failed to load data files")
 
@@ -53,10 +69,7 @@ redistribution_df = calculate_redistribution_impact(tax_df_long)
 # Route to display all plots and analysis
 @app.route('/')
 def home():
-    # Dictionary to store plot URLs
     plot_urls = {}
-
-    # Generate and save each plot
     plots = [
         ('disposable_income_trends', plot_disposable_income_trends, [tax_df_long]),
         ('income_inequality', plot_income_inequality, [inequality]),
@@ -84,7 +97,7 @@ def home():
         except Exception as e:
             print(f"Error generating {plot_name}: {e}")
 
-    # Capture analysis output (e.g., descriptive statistics)
+    # Capture analysis output
     from io import StringIO
     import sys
     old_stdout = sys.stdout
