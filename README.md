@@ -13,16 +13,16 @@ This repository contains a Python-based analysis of key macroeconomic indicators
 ```
 .
 ├── src
-│   ├── app.py
+│   └── taxes_and_benefits/
+│   │   ├── data_analysis.py
+│   │   ├── data_cleaning.py
+│   │   ├── data_management.py
+│   │   ├── data_visualization.py
+│   │   ├── main.py
+│   │   ├── requirements.txt
 │   ├── data.py
-│   ├── data_analysis.py
-│   ├── data_cleaning.py
-│   ├── data_management.py
-│   ├── data_visualization.py
-│   ├── main.py
 │   ├── stat.py
 │   └── streamlit_version.py
-│   └── requirements.txt
 ├── jupyter_notebooks
 │   └── 2008_Global_Financial_Crises.ipynb
 │   └── 2022_Energy_and_Inflation_Crises.ipynb
