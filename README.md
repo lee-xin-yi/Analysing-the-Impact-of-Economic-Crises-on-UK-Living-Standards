@@ -37,7 +37,7 @@ This repository contains a Python-based analysis of key macroeconomic indicators
 - Dependencies: Listed in requirements.txt.
 - Data files: Datasets are not included due to potential sensitivity. Please use your own datasets.
 
-### Installation
+### 🔌 Installation
 1. Clone the Repository:
     ```sh
     git clone https://github.com/your-username/uk-tax-benefits-analysis.git
