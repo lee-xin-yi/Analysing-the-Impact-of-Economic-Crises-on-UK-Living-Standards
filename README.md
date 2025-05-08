@@ -43,24 +43,30 @@ This repository contains a Python-based analysis of key macroeconomic indicators
     git clone https://github.com/your-username/uk-tax-benefits-analysis.git
     cd uk-tax-benefits-analysis
     ```
+    
 2. Install Dependencies:
     ```sh
     pip install -r requirements.txt
     ```
+    
 3. Place Data Files:
    - Copy the required Excel and CSV files to the data/ directory
    - Update file paths in main.py if necessary (default: ./data/)
-   - Alternatively, use placeholder data as described in data/README.md.
+   - Alternatively, use placeholder data as described in data/README.md
+    
 4. Run the Analysis:
    ```sh
    python main.py 
    ```
+   
 6. [If you want to run Streamlit] Google Gemini API Key at https://ai.google.dev/gemini-api/docs/api-key
-7. [If you want to run Streamlit] Enter your API key in 'streamlit_version.py'
+
+8. [If you want to run Streamlit] Enter your API key in 'streamlit_version.py'
     ```sh
     genai.configure(api_key="INSERT API KEY HERE")
     ```
-8. Change git remote url to avoid accidental pushes to base project
+    
+9. Change git remote url to avoid accidental pushes to base project
    ```sh
    git remote set-url origin github_username/repo_name
    git remote -v # confirm the changes
