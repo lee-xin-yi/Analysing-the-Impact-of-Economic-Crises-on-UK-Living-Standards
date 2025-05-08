@@ -58,15 +58,8 @@ This repository contains a Python-based analysis of key macroeconomic indicators
    ```sh
    python main.py 
    ```
-   
-6. [If you want to run Streamlit] Google Gemini API Key at https://ai.google.dev/gemini-api/docs/api-key
-
-8. [If you want to run Streamlit] Enter your API key in 'streamlit_version.py'
-    ```sh
-    genai.configure(api_key="INSERT API KEY HERE")
-    ```
     
-9. Change git remote url to avoid accidental pushes to base project
+5. Change git remote url to avoid accidental pushes to base project
    ```sh
    git remote set-url origin github_username/repo_name
    git remote -v # confirm the changes
@@ -79,6 +72,7 @@ This repository contains a Python-based analysis of key macroeconomic indicators
 - Console output includes data previews, statistics, and Granger causality tests
 ### Website
 - Interactive dashboard where users can upload data and view the resulting charts
+- Obtain your Google Gemini API Key from https://ai.google.dev/gemini-api/docs/api-key, and paste it into the input field on the website.
 
 ## 🖊️ Technical Notes
 A TypeError in the redistribution impact plot was resolved by enforcing numeric types and handling NaNs (see tax_benefits_report.md).
